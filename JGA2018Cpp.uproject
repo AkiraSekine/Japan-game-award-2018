@@ -7,7 +7,10 @@
 		{
 			"Name": "JGA2018Cpp",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	]
 }
