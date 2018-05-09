@@ -3,7 +3,7 @@
 #include "MainPlayerController.h"
 
 AMainPlayerController::AMainPlayerController()
-{
-	static ConstructorHelpers::FObjectFinder<UClass> foundActor(TEXT("Game/Brueprints/BP_MainHUD.BP_MainHUD_C"));
-	HUD = foundActor.Object;
+{/*
+	static ConstructorHelpers::FObjectFinder<UClass> foundActor(TEXT("Game/Blueprints/BP_MainHUD.BP_MainHUD_C"));
+	HUD = foundActor.Object;*/
 }

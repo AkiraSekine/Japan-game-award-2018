@@ -28,8 +28,21 @@ public:
 
 private:
 
+	bool camera = false;
+
 	FVector2D moveInput;
 	FVector2D cameraInput;
+
+	TSubclassOf<ACharacter> alphaEnemy;
+
+	inline void CameraPressed()
+	{
+		camera = true;
+	}
+	inline void CameraReleased()
+	{
+		camera = false;
+	}
 
 	inline void MoveForward(float axisValue)
 	{
