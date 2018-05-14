@@ -41,6 +41,18 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		bool canCharge = false;
 
+	UPROPERTY(BlueprintReadWrite)
+		bool haveKey = false;
+
+	UPROPERTY(BlueprintReadWrite)
+		float battery = 100.f;
+
+	UPROPERTY(BlueprintReadWrite)
+		AActor * overlapActor;
+
+	UPROPERTY(BlueprintReadWrite)
+		AActor * frontActor;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -55,8 +67,6 @@ private:
 
 	FVector2D moveInput;
 	FVector2D cameraInput;
-
-	float battery = 100.f;
 
 	TSubclassOf<class AActor> chargerClass;
 	AActor * charger;
@@ -102,4 +112,7 @@ private:
 	{
 		cameraInput.X = axisValue;
 	}
+
+	UFUNCTION(BlueprintCallable)
+		void AddBattery(int value);
 };

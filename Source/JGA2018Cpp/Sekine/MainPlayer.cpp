@@ -43,18 +43,6 @@ void AMainPlayer::Tick(float DeltaTime)
 	{
 		battery -= 2.f * DeltaTime;
 	}
-
-	if (action)
-	{
-		FHitResult hitActor;
-
-		ActorLineTraceSingle(hitActor, this->GetActorLocation(), this->GetActorLocation() + GetActorForwardVector()*50.f, ECollisionChannel::ECC_Visibility, FCollisionQueryParams());
-
-		if (Cast<AActor>(hitActor.Actor->GetClass()) && canCharge)
-		{
-			battery += 10;
-		}
-	}
 }
 
 // Called to bind functionality to input
@@ -73,5 +61,15 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	InputComponent->BindAxis("MoveRight", this, &AMainPlayer::MoveRight);
 	InputComponent->BindAxis("Turn", this, &AMainPlayer::Turn);
 	InputComponent->BindAxis("LookUp", this, &AMainPlayer::LookUp);
+}
+
+void AMainPlayer::AddBattery(int value)
+{
+	battery += value;
+
+	if (battery > 100.f)
+	{
+		battery = 100.f;
+	}
 }
 
