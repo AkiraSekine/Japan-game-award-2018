@@ -6,7 +6,13 @@
 #include "GameFramework/Character.h"
 #include "MainPlayer.generated.h"
 
-UCLASS()
+UENUM()
+enum class EPlayerCondition : uint8
+{
+	Normal, Locker
+};
+
+UCLASS(BlueprintType)
 class JGA2018CPP_API AMainPlayer : public ACharacter
 {
 	GENERATED_BODY()
@@ -19,7 +25,22 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
+
+	UPROPERTY(BlueprintReadOnly)
+		float walkSpeed = 300;
+	UPROPERTY(BlueprintReadOnly)
+		float sprintSpeed = 450;
+
+	UPROPERTY(BlueprintReadWrite)
+		EPlayerCondition condition = EPlayerCondition::Normal;
+
+	UPROPERTY(BlueprintReadWrite)
+		bool holdCamera = false;
+
+	UPROPERTY(BlueprintReadWrite)
+		bool canCharge = false;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -29,11 +50,16 @@ public:
 private:
 
 	bool camera = false;
+	bool sprint = false;
+	bool action = false;
 
 	FVector2D moveInput;
 	FVector2D cameraInput;
 
-	TSubclassOf<ACharacter> alphaEnemy;
+	float battery = 100.f;
+
+	TSubclassOf<class AActor> chargerClass;
+	AActor * charger;
 
 	inline void CameraPressed()
 	{
@@ -42,6 +68,22 @@ private:
 	inline void CameraReleased()
 	{
 		camera = false;
+	}
+	inline void SprintPressed()
+	{
+		sprint = true;
+	}
+	inline void SprintReleased()
+	{
+		sprint = false;
+	}
+	inline void ActionPressed()
+	{
+		action = true;
+	}
+	inline void ActionReleased()
+	{
+		action = false;
 	}
 
 	inline void MoveForward(float axisValue)
