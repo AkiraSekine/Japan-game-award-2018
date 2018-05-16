@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+//#include "Locker.h"
 #include "MainPlayer.generated.h"
 
 UENUM()
@@ -26,6 +27,13 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+	UPROPERTY(BlueprintReadWrite)
+		bool action = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool camera = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool sprint = false;
 
 	UPROPERTY(BlueprintReadOnly)
 		float walkSpeed = 300;
@@ -53,6 +61,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		AActor * frontActor;
 
+	UPROPERTY(BlueprintReadWrite)
+		APlayerController * playerController;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -61,40 +72,8 @@ public:
 
 private:
 
-	bool camera = false;
-	bool sprint = false;
-	bool action = false;
-
 	FVector2D moveInput;
 	FVector2D cameraInput;
-
-	TSubclassOf<class AActor> chargerClass;
-	AActor * charger;
-
-	inline void CameraPressed()
-	{
-		camera = true;
-	}
-	inline void CameraReleased()
-	{
-		camera = false;
-	}
-	inline void SprintPressed()
-	{
-		sprint = true;
-	}
-	inline void SprintReleased()
-	{
-		sprint = false;
-	}
-	inline void ActionPressed()
-	{
-		action = true;
-	}
-	inline void ActionReleased()
-	{
-		action = false;
-	}
 
 	inline void MoveForward(float axisValue)
 	{
