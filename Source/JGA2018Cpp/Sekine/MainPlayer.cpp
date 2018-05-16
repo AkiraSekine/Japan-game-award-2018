@@ -16,11 +16,7 @@ void AMainPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	FActorSpawnParameters spawnInfo;
-
-	chargerClass = TSoftClassPtr<AActor>(FSoftObjectPath(TEXT("Game/Blueprints/Sekine/BP_Charger.BP_Charger_C"))).LoadSynchronous();
-
-	charger = GetWorld()->SpawnActor<AActor>(chargerClass, spawnInfo);
+	
 }
 
 // Called every frame
@@ -49,13 +45,6 @@ void AMainPlayer::Tick(float DeltaTime)
 void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-	InputComponent->BindAction("Camera", IE_Pressed, this, &AMainPlayer::CameraPressed);
-	InputComponent->BindAction("Camera", IE_Released, this, &AMainPlayer::CameraReleased);
-	InputComponent->BindAction("Sprint", IE_Pressed, this, &AMainPlayer::SprintPressed);
-	InputComponent->BindAction("Sprint", IE_Released, this, &AMainPlayer::SprintReleased);
-	InputComponent->BindAction("Action", IE_Pressed, this, &AMainPlayer::ActionPressed);
-	InputComponent->BindAction("Action", IE_Released, this, &AMainPlayer::ActionReleased);
 
 	InputComponent->BindAxis("MoveForward", this, &AMainPlayer::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMainPlayer::MoveRight);
