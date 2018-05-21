@@ -15,8 +15,6 @@ AMainPlayer::AMainPlayer()
 void AMainPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-
-	
 }
 
 // Called every frame
