@@ -35,7 +35,7 @@ void AMainPlayer::Tick(float DeltaTime)
 
 	if (holdCamera)
 	{
-		battery -= DeltaTime;
+		battery -= DeltaTime * 0.5f;
 	}
 }
 
