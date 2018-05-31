@@ -51,6 +51,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		bool haveKey = false;
 
+	UPROPERTY(BlueprintReadOnly)
+		bool isWalk = false;
+
 	UPROPERTY(BlueprintReadWrite)
 		float battery = 100.f;
 

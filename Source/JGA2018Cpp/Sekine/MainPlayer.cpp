@@ -27,6 +27,11 @@ void AMainPlayer::Tick(float DeltaTime)
 
 	if (condition != EPlayerCondition::Locker)
 	{
+		if (moveInput.X > 0)
+			isWalk = true;
+		else
+			isWalk = false;
+
 		AddMovementInput(this->GetActorForwardVector(), moveInput.X);
 		AddMovementInput(this->GetActorRightVector(), moveInput.Y);
 	}
