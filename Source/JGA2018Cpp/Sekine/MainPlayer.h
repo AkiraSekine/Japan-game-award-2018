@@ -6,10 +6,11 @@
 #include "GameFramework/Character.h"
 #include "MainPlayer.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class EPlayerCondition : uint8
 {
-	Normal, Locker
+	Normal UMETA(DisplayName = "Normal"),
+	Locker UMETA(DisplayName = "Locker")
 };
 
 UCLASS(BlueprintType)
@@ -40,7 +41,7 @@ public:
 		float sprintSpeed = 450;
 
 	UPROPERTY(BlueprintReadWrite)
-		EPlayerCondition condition = EPlayerCondition::Normal;
+		EPlayerCondition condition;
 
 	UPROPERTY(BlueprintReadWrite)
 		bool holdCamera = false;

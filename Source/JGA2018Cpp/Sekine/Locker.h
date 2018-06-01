@@ -34,5 +34,5 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-		void Enter();
+		virtual void Enter();
 };
