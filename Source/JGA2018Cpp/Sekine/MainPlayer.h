@@ -34,6 +34,8 @@ public:
 		bool camera = false;
 	UPROPERTY(BlueprintReadWrite)
 		bool sprint = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool lockerMove = false;
 
 	UPROPERTY(BlueprintReadOnly)
 		float walkSpeed = 300;
