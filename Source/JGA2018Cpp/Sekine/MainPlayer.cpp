@@ -37,7 +37,7 @@ void AMainPlayer::Tick(float DeltaTime)
 		AddMovementInput(this->GetActorRightVector(), moveInput.Y);
 	}
 
-	GetCharacterMovement()->MaxWalkSpeed = ((sprint && !holdCamera) ? sprintSpeed : walkSpeed);
+	GetCharacterMovement()->MaxWalkSpeed = ((sprint && !holdCamera) ? sprintSpeed : walkSpeed) * !lockerMove;
 
 	if (holdCamera)
 	{
